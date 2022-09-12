@@ -27,7 +27,7 @@ They are high quality content and he provides the HD files for free.
 ## Installation
 
 **Windows:**\
-Download the [release]() and extract the zip anywhere you want.
+Download the [release](https://github.com/BenPyton/OsciView/releases) and extract the zip anywhere you want.
 Then run `OsciView.exe`.
 
 **Mac/Linux:**\
@@ -39,7 +39,7 @@ Just watch it.\
 You can change some of the beam parameters and the FPS limit from the dials. 
 You can select the recorded output device from the button below the dials.
 
-You can get [a calibrating audio file]() to see what happens on the oscilloscope view.\
+You can get [a calibrating audio file](https://www.youtube.com/watch?v=KFtd-OlNbtw) to see what happens on the oscilloscope view.\
 
 If you have some issues like no displacement, then it is likely your audio card removes the DC component of the wave. This DC does not change nothing in the perceived sound, but the drawings on the oscilloscope are distorted when it is removed.
 
