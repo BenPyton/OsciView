@@ -34,7 +34,7 @@ void StereoRecorder::updateSamples()
 		timeSpace.resize(m_rightSamples.size());
 		for (int k = 0; k < m_rightSamples.size(); ++k)
 		{
-			timeSpace[k] = m_leftSamples.at(k) / static_cast<double>(INT16_MAX);
+			timeSpace[k] = m_rightSamples.at(k) / static_cast<double>(INT16_MAX);
 		}
 
 		DFT(timeSpace, m_rightDFT);
