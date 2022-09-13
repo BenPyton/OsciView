@@ -4,6 +4,8 @@
 
 This is a personal project I've done some years ago after seeing [the video of SmarterEveryDay](https://www.youtube.com/watch?v=4gibcRfp4zA) on this subject.
 
+<img src="thumbnail.png?raw=true" width="800"></img>
+
 ## Overview
 
 The purpose of this software is to visualize the output audio of the computer like on an oscilloscope.\
@@ -22,7 +24,7 @@ I recommend to get the great music HD files from [Chris Allen's Youtube channel]
 They are high quality content and he provides the HD files for free.
 
 ### Demo Video
-
+[![OsciView Demo Video](http://img.youtube.com/vi/1Xr5YlxJNBo/0.jpg)](https://youtu.be/1Xr5YlxJNBo)<br>
 
 ## Installation
 
