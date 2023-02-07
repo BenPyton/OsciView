@@ -53,13 +53,19 @@ int main()
 		sf::Color(255, 0, 255)
 	};
 
-	const string devicePrefix = "OpenAL Soft on ";
+	const string devicePrefix =
+#ifdef _WIN32
+	"OpenAL Soft on "
+#else
+	"";
+#endif
+	;
 
 	StereoRecorder recorder;
 	recorder.setChannelCount(2);
 	recorder.start(48000);
 
-	string defaultDevice = sf::SoundBufferRecorder::getDefaultDevice().substr(15);
+	string defaultDevice = sf::SoundBufferRecorder::getDefaultDevice().substr(devicePrefix.length());
 	if (!recorder.setDevice(devicePrefix + defaultDevice))
 	{
 		cout << "Failed to open audio device: \"" << defaultDevice << "\"" << endl;
@@ -182,7 +188,7 @@ int main()
 	std::vector<Button*> deviceButtons(devices.size());
 	for(int i = 0; i < devices.size(); ++i)
 	{
-		string deviceName = devices[i].substr(15);
+		string deviceName = devices[i].substr(devicePrefix.length());
 		cout << "\"" << deviceName << "\"" << endl;
 		deviceButtons[i] = new Button(0, 0, 300, 30, style);
 		deviceButtons[i]->setText(deviceName);
