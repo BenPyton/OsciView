@@ -11,6 +11,8 @@
 
 #include "Time.h"
 
+#include <cstring>  // for memset
+
 Time Time::m_instance = Time();
 
 Time::Time()

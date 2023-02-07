@@ -12,6 +12,8 @@
 #include "Input.h"
 #include "Window.h"
 
+#include <cstring>  // for memset
+
 Input Input::m_instance = Input();
 
 Input::Input()
