@@ -12,6 +12,8 @@
 #include "DialButton.h"
 #include "../Core/Utils.h"
 
+#include <cmath>  // for round
+
 DialButton::DialButton(int x, int y, int w, int h, UIStyle& style)
 	: AbstractSlider(x, y, w, h, style)
 	, m_mouseOffset()
