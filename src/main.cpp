@@ -88,11 +88,11 @@ int main()
 
 	WaveView waveLeft(0, 0, 200, 0, style);
 	waveLeft.setSampleRate(recorder.getSampleRate());
-	waveLeft.setSamples(recorder.getLeftSamples());
+	waveLeft.setSamples(recorder.getLeftBuffer());
 
 	WaveView waveRight(0, 0, 200, 0, style);
 	waveRight.setSampleRate(recorder.getSampleRate());
-	waveRight.setSamples(recorder.getRightSamples());
+	waveRight.setSamples(recorder.getRightBuffer());
 
 	HorizontalLayout waveLayout(0, 30, 430, 120);
 	waveLayout.setPaddings(10, 10, 10, 10);
@@ -101,10 +101,10 @@ int main()
 	waveLayout.add(waveRight);
 
 	FreqView freqLeft(0, 0, 200, 0, style);
-	freqLeft.setSamples(recorder.getLeftDFT());
+	freqLeft.setSamples(recorder.getLeftFFT());
 
 	FreqView freqRight(0, 0, 200, 0, style);
-	freqRight.setSamples(recorder.getRightDFT());
+	freqRight.setSamples(recorder.getRightFFT());
 
 	HorizontalLayout freqLayout(0, 150, 430, 110);
 	freqLayout.setPaddings(10, 10, 0, 10);
@@ -113,10 +113,10 @@ int main()
 	freqLayout.add(freqRight);
 
 	SpectrumView spectrumLeft(0, 0, 200, 0, style);
-	spectrumLeft.setSamples(recorder.getLeftDFT());
+	spectrumLeft.setSamples(recorder.getLeftFFT());
 
 	SpectrumView spectrumRight(0, 0, 200, 0, style);
-	spectrumRight.setSamples(recorder.getRightDFT());
+	spectrumRight.setSamples(recorder.getRightFFT());
 
 	HorizontalLayout spectrumLayout(0, 260, 430, 200);
 	spectrumLayout.setPaddings(10, 10, 0, 10);
@@ -125,7 +125,7 @@ int main()
 	spectrumLayout.add(spectrumRight);
 
 	OsciView osciView(430, 10, 600, 600, style);
-	osciView.setSamples(recorder.getLeftSamples(), recorder.getRightSamples());
+	osciView.setSamples(recorder.getLeftBuffer(), recorder.getRightBuffer());
 	osciView.setColor(colorList[colorIndex]);
 
 	DialButton intensityDial(0, 0, 80, 80, style);
@@ -170,7 +170,7 @@ int main()
 	selectAudioDeviceButton.setMaxTextLength(40);
 
 	// Main window layout
-	Layout rootLayout(0, 0, Window::GetWidth(), Window::GetHeight());
+	Layout rootLayout(0, 0, static_cast<int>(Window::GetWidth()), static_cast<int>(Window::GetHeight()));
 	rootLayout.add(labelLayout);
 	rootLayout.add(waveLayout);
 	rootLayout.add(osciView);
@@ -205,7 +205,7 @@ int main()
 	deviceSelectionLabel.setText("Audio Device Selection");
 	deviceSelectionLabel.setAlignement(TextAlign::ALIGN_CENTER);
 
-	Layout deviceSelectionLayout(0, 0, Window::GetWidth(), Window::GetHeight());
+	Layout deviceSelectionLayout(0, 0, static_cast<int>(Window::GetWidth()), static_cast<int>(Window::GetHeight()));
 	deviceSelectionLayout.add(deviceSelectionLabel);
 	deviceSelectionLayout.add(backButton);
 	deviceSelectionLayout.add(deviceButtonsLayout);
@@ -236,7 +236,7 @@ int main()
 
 			if (lineWidthDial.valueChanged())
 			{
-				osciView.setLineWidth(lineWidthDial.getValue());
+				osciView.setLineWidth(static_cast<float>(lineWidthDial.getValue()));
 			}
 
 			if (hueDial.valueChanged())

@@ -99,7 +99,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>
       </SDLCheck>
-      <AdditionalIncludeDirectories>D:\SFML-2.5.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)modules\fft-real;D:\SFML-2.5.1\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -118,7 +118,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\SFML-2.5.1-x64\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)modules\fft-real;D:\SFML-2.5.1-x64\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -140,7 +140,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>
       </SDLCheck>
-      <AdditionalIncludeDirectories>D:\SFML-2.5.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)modules\fft-real;D:\SFML-2.5.1\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -164,7 +164,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\SFML-2.5.1-x64\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)modules\fft-real;D:\SFML-2.5.1-x64\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -183,6 +183,26 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\modules\fft-real\ffft\Array.h" />
+    <ClInclude Include="..\modules\fft-real\ffft\Array.hpp" />
+    <ClInclude Include="..\modules\fft-real\ffft\def.h" />
+    <ClInclude Include="..\modules\fft-real\ffft\DynArray.h" />
+    <ClInclude Include="..\modules\fft-real\ffft\DynArray.hpp" />
+    <ClInclude Include="..\modules\fft-real\ffft\FFTReal.h" />
+    <ClInclude Include="..\modules\fft-real\ffft\FFTReal.hpp" />
+    <ClInclude Include="..\modules\fft-real\ffft\FFTRealFixLen.h" />
+    <ClInclude Include="..\modules\fft-real\ffft\FFTRealFixLen.hpp" />
+    <ClInclude Include="..\modules\fft-real\ffft\FFTRealFixLenParam.h" />
+    <ClInclude Include="..\modules\fft-real\ffft\FFTRealPassDirect.h" />
+    <ClInclude Include="..\modules\fft-real\ffft\FFTRealPassDirect.hpp" />
+    <ClInclude Include="..\modules\fft-real\ffft\FFTRealPassInverse.h" />
+    <ClInclude Include="..\modules\fft-real\ffft\FFTRealPassInverse.hpp" />
+    <ClInclude Include="..\modules\fft-real\ffft\FFTRealSelect.h" />
+    <ClInclude Include="..\modules\fft-real\ffft\FFTRealSelect.hpp" />
+    <ClInclude Include="..\modules\fft-real\ffft\FFTRealUseTrigo.h" />
+    <ClInclude Include="..\modules\fft-real\ffft\FFTRealUseTrigo.hpp" />
+    <ClInclude Include="..\modules\fft-real\ffft\OscSinCos.h" />
+    <ClInclude Include="..\modules\fft-real\ffft\OscSinCos.hpp" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="Core\Animation.h" />
     <ClInclude Include="Core\Input.h" />
@@ -190,10 +210,12 @@
     <ClInclude Include="Core\Time.h" />
     <ClInclude Include="Core\Utils.h" />
     <ClInclude Include="Core\Window.h" />
+    <ClInclude Include="FFTWrapper.h" />
     <ClInclude Include="FreqView.h" />
     <ClInclude Include="OsciView.h" />
     <ClInclude Include="SpectrumView.h" />
     <ClInclude Include="StereoRecorder.h" />
+    <ClInclude Include="Types.h" />
     <ClInclude Include="UI.h" />
     <ClInclude Include="UI\AbstractSlider.h" />
     <ClInclude Include="UI\AbstractUI.h" />
@@ -220,6 +242,7 @@
     <ClCompile Include="Core\Time.cpp" />
     <ClCompile Include="Core\Utils.cpp" />
     <ClCompile Include="Core\Window.cpp" />
+    <ClCompile Include="FFTWrapper.cpp" />
     <ClCompile Include="FreqView.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OsciView.cpp" />

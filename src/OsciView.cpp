@@ -115,10 +115,10 @@ void OsciView::swap(OsciView& _other)
 	std::swap(m_vertices, _other.m_vertices);
 }
 
-void OsciView::setSamples(std::vector<sf::Int16>* _leftSamples, std::vector<sf::Int16>* _rightSamples)
+void OsciView::setSamples(const AudioBuffer& _leftSamples, const AudioBuffer& _rightSamples)
 {
-	m_leftSamples = _leftSamples;
-	m_rightSamples = _rightSamples;
+	m_leftSamples = &_leftSamples;
+	m_rightSamples = &_rightSamples;
 }
 
 void OsciView::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -131,7 +131,7 @@ void OsciView::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	float halfHeight = m_rect->getSize().y * 0.5f;
 
 	float sigma = 0.4f;
-	float a = 1.0f / (sigma * _SQRT2PI);
+	float a = 1.0f / (sigma * static_cast<float>(_SQRT2PI));
 	float b = -1.0f / (2 * sigma * sigma);
 	float lineHalfWidth = m_lineWidth * 0.5f;;
 
@@ -145,7 +145,7 @@ void OsciView::draw(sf::RenderTarget& target, sf::RenderStates states) const
 		m_shader->setUniform("_Intensity", m_intensity);
 	}
 
-	for(int i = 0; i < m_leftSamples->size(); ++i)
+	for(size_t i = 0; i < m_leftSamples->size(); ++i)
 	{
 		p2.x = m_rect->getPosition().x + halfWidth + halfWidth * m_leftSamples->at(i) / static_cast<float>(INT16_MAX);
 		p2.y = m_rect->getPosition().y + halfHeight - halfHeight * m_rightSamples->at(i) / static_cast<float>(INT16_MAX);

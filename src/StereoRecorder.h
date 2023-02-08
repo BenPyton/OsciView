@@ -4,42 +4,43 @@
 #include <SFML/Audio/SoundRecorder.hpp>
 #include <vector>
 #include <mutex>
+#include "Types.h"
 
 class StereoRecorder : public sf::SoundRecorder
 {
 public:
 	StereoRecorder();
+	virtual ~StereoRecorder();
 
-	std::vector<sf::Int16>* getRightSamples() { return &m_rightSamples; }
-	std::vector<sf::Int16>* getLeftSamples() { return &m_leftSamples; }
+	const FrequencyBuffer& getRightFFT() { return m_rightFreq; }
+	const FrequencyBuffer& getLeftFFT() { return m_leftFreq; }
 
-	std::vector<double>* getRightDFT() { return &m_rightDFT; }
-	std::vector<double>* getLeftDFT() { return &m_leftDFT; }
+	const AudioBuffer& getRightBuffer() const { return m_rightData; }
+	const AudioBuffer& getLeftBuffer() const { return m_leftData; }
 
 	// Method called in main thread loop to swap buffers
 	void updateSamples();
-
-	inline void enableDFT(bool enable) { m_DFTEnabled = enable; }
-	inline bool DFTEnabled() const { return m_DFTEnabled; }
 
 protected:
 	virtual bool onProcessSamples(const sf::Int16* _samples, std::size_t _sampleCount) override;
 
 private:
 	std::mutex m_bufferMutex;
+
 	// Buffers used in recorder thread
-	std::vector<sf::Int16> m_rightBuffer;
-	std::vector<sf::Int16> m_leftBuffer;
+	AudioBuffer m_rightDataBuffer;
+	AudioBuffer m_leftDataBuffer;
 
 	// Buffers used in main thread (by external code)
-	std::vector<sf::Int16> m_rightSamples;
-	std::vector<sf::Int16> m_leftSamples;
+	AudioBuffer m_rightData;
+	AudioBuffer m_leftData;
 
-	// Buffers storing frequency domain
-	std::vector<double> m_rightDFT;
-	std::vector<double> m_leftDFT;
+	FrequencyBuffer m_rightFreq;
+	FrequencyBuffer m_leftFreq;
 
-	bool m_DFTEnabled;
+	FFTWrapper m_FFT;
+
+	size_t m_pos;
 };
 
 #endif // STEREORECORDER_H

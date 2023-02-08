@@ -3,6 +3,7 @@
 
 #include "UI/AbstractUI.h"
 #include <vector>
+#include "Types.h"
 
 class FreqView : public AbstractUI
 {
@@ -15,14 +16,14 @@ public:
 	FreqView& operator=(FreqView&& _fv);
 	void swap(FreqView& _other);
 
-	void setSamples(std::vector<double>* _samples);
+	void setSamples(const FrequencyBuffer& _samples);
 
 protected:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	virtual void _updateState() override;
 
 private:
-	std::vector<double>* m_samples = nullptr;
+	const FrequencyBuffer* m_samples = nullptr;
 	sf::VertexArray* m_vertices = nullptr;
 	sf::Color m_color;
 };

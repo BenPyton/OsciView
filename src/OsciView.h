@@ -2,7 +2,7 @@
 #define OSCIVIEW_H
 
 #include "UI/AbstractUI.h"
-#include <vector>
+#include "Types.h"
 
 class OsciView : public AbstractUI
 {
@@ -15,7 +15,7 @@ public:
 	OsciView& operator=(OsciView&& _ov);
 	void swap(OsciView& _other);
 
-	void setSamples(std::vector<sf::Int16>* _leftSamples, std::vector<sf::Int16>* _rightSamples);
+	void setSamples(const AudioBuffer& _leftSamples, const AudioBuffer& _rightSamples);
 	void setColor(sf::Color _color) { m_color = _color; }
 	void setIntensity(float _intensity) { m_intensity = _intensity; }
 	void setLineWidth(float _lineWidth) { m_lineWidth = _lineWidth; }
@@ -25,8 +25,8 @@ protected:
 	virtual void _updateState() override;
 
 private:
-	std::vector<sf::Int16>* m_rightSamples = nullptr;
-	std::vector<sf::Int16>* m_leftSamples = nullptr;
+	const AudioBuffer* m_rightSamples = nullptr;
+	const AudioBuffer* m_leftSamples = nullptr;
 	sf::VertexArray* m_vertices = nullptr;
 	sf::Shader* m_shader = nullptr;
 	sf::Color m_color;

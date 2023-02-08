@@ -25,6 +25,9 @@
     <Filter Include="Fichiers sources\UI">
       <UniqueIdentifier>{22d7a30b-b47a-4df9-bd97-32deeaeb53a6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ffft">
+      <UniqueIdentifier>{4ab54217-2ca1-4a47-9f64-213472e54512}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -117,6 +120,72 @@
     <ClInclude Include="SpectrumView.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="FFTWrapper.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Types.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="..\modules\fft-real\ffft\Array.h">
+      <Filter>ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\modules\fft-real\ffft\Array.hpp">
+      <Filter>ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\modules\fft-real\ffft\def.h">
+      <Filter>ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\modules\fft-real\ffft\DynArray.h">
+      <Filter>ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\modules\fft-real\ffft\DynArray.hpp">
+      <Filter>ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\modules\fft-real\ffft\FFTReal.h">
+      <Filter>ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\modules\fft-real\ffft\FFTReal.hpp">
+      <Filter>ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\modules\fft-real\ffft\FFTRealFixLen.h">
+      <Filter>ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\modules\fft-real\ffft\FFTRealFixLen.hpp">
+      <Filter>ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\modules\fft-real\ffft\FFTRealFixLenParam.h">
+      <Filter>ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\modules\fft-real\ffft\FFTRealPassDirect.h">
+      <Filter>ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\modules\fft-real\ffft\FFTRealPassDirect.hpp">
+      <Filter>ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\modules\fft-real\ffft\FFTRealPassInverse.h">
+      <Filter>ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\modules\fft-real\ffft\FFTRealPassInverse.hpp">
+      <Filter>ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\modules\fft-real\ffft\FFTRealSelect.h">
+      <Filter>ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\modules\fft-real\ffft\FFTRealSelect.hpp">
+      <Filter>ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\modules\fft-real\ffft\FFTRealUseTrigo.h">
+      <Filter>ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\modules\fft-real\ffft\FFTRealUseTrigo.hpp">
+      <Filter>ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\modules\fft-real\ffft\OscSinCos.h">
+      <Filter>ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\modules\fft-real\ffft\OscSinCos.hpp">
+      <Filter>ffft</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -201,6 +270,9 @@
       <Filter>Fichiers sources\UI</Filter>
     </ClCompile>
     <ClCompile Include="SpectrumView.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FFTWrapper.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
