@@ -4,7 +4,7 @@
 WaveView::WaveView(int x, int y, int width, int height, UIStyle& style)
 	: AbstractUI(x, y, width, height, style)
 {
-	m_vertices = new sf::VertexArray(sf::PrimitiveType::Lines, width * 2);
+	m_vertices = new sf::VertexArray(sf::PrimitiveType::Lines, static_cast<size_t>(width) * 2);
 }
 
 WaveView::WaveView(const WaveView& _wv)
@@ -37,9 +37,9 @@ void WaveView::swap(WaveView& _other)
 	std::swap(m_sampleRate, _other.m_sampleRate);
 }
 
-void WaveView::setSamples(std::vector<sf::Int16>* _samples)
+void WaveView::setSamples(const AudioBuffer& _samples)
 {
-	m_samples = _samples;
+	m_samples = &_samples;
 }
 
 void WaveView::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -48,15 +48,13 @@ void WaveView::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 	float samplePerPixel = static_cast<float>(m_sampleRate) * 0.01f / m_rect->getSize().x;
 
-	//cout << "COUNT: " << m_samples->size() << endl;
-
 	m_vertices->clear();
 	float halfHeight = m_rect->getSize().y * 0.5f;
 	sf::Int16 min, max;
 	float x, yMin, yMax;
 	for(int i = 0; i < m_rect->getSize().x; ++i)
 	{
-		getMinMax(round(i * samplePerPixel), round((i + 1) * samplePerPixel), min, max);
+		getMinMax(static_cast<size_t>(round(i * samplePerPixel)), static_cast<size_t>(round((i + 1) * samplePerPixel)), min, max);
 		x = i + m_rect->getPosition().x;
 		yMin = m_rect->getPosition().y + halfHeight - halfHeight * min / static_cast<float>(INT16_MAX);
 		yMax = m_rect->getPosition().y + halfHeight - halfHeight * max / static_cast<float>(INT16_MAX);
@@ -78,7 +76,7 @@ void WaveView::getMinMax(size_t start, size_t end, sf::Int16& outMin, sf::Int16&
 	outMax = INT16_MIN;
 
 	sf::Int16 sample;
-	for(int i = start; i <= end; ++i)
+	for(size_t i = start; i <= end; ++i)
 	{
 		sample = (i < m_samples->size()) ? m_samples->at(i) : 0;
 		if(sample < outMin)

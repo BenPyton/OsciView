@@ -2,7 +2,7 @@
 #define WAVEVIEW_H
 
 #include "UI/AbstractUI.h"
-#include <vector>
+#include "Types.h"
 
 class WaveView : public AbstractUI
 {
@@ -15,7 +15,7 @@ public:
 	WaveView& operator=(WaveView&& _wv);
 	void swap(WaveView& _other);
 
-	void setSamples(std::vector<sf::Int16>* _samples);
+	void setSamples(const AudioBuffer& _samples);
 	void setSampleRate(int _sampleRate) { m_sampleRate = _sampleRate; }
 
 protected:
@@ -26,7 +26,7 @@ private:
 	void getMinMax(size_t start, size_t end, sf::Int16& outMin, sf::Int16& outMax) const;
 
 private:
-	std::vector<sf::Int16>* m_samples = nullptr;
+	const AudioBuffer* m_samples = nullptr;
 	sf::VertexArray* m_vertices = nullptr;
 	int m_sampleRate = 0;
 };

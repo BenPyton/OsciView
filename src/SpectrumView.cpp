@@ -54,12 +54,11 @@ void SpectrumView::swap(SpectrumView& _other)
 	std::swap(m_color, _other.m_color);
 }
 
-void SpectrumView::setSamples(std::vector<double>* _samples)
+void SpectrumView::setSamples(const FrequencyBuffer& _samples)
 {
-	m_samples = _samples;
+	m_samples = &_samples;
 }
 
-#pragma optimize( "", off )
 void SpectrumView::update()
 {
 	AbstractUI::update();
@@ -70,6 +69,7 @@ void SpectrumView::update()
 	if (m_samples->size() <= 0)
 		return;
 
+	size_t fftSize = FFT_SIZE / 2;
 	size_t nbStep = 50;
 
 	double a = 2595.0, b = 700.0;
@@ -79,27 +79,22 @@ void SpectrumView::update()
 	double maxMel = a * log10(1.0 + maxFreq / b);
 	double melStep = maxMel / nbStep;
 
-	double stepFr = maxFreq / m_samples->size();
-	//float stepPx = m_rect->getSize().x / m_frequencySpace.size();// log10(20000.0);
+	double stepFr = maxFreq / fftSize;
 
-	float x, y, yBase = m_rect->getPosition().y;
-	float samplePerStep = m_samples->size() / static_cast<float>(nbStep);
 	float pixelPerStep = m_rect->getSize().x / static_cast<float>(nbStep);
 	size_t sampleStart = 0, sampleEnd = 0;
 	for (size_t i = 0; i < nbStep - 1; ++i)
 	{
-		//size_t start = static_cast<size_t>(round(i * samplePerStep));
-		//size_t end = static_cast<size_t>(round((i + 1) * samplePerStep));
 		double mel = b * (pow(10.0, melStep * (i + 1) / a) - 1);
 		sampleStart = sampleEnd;
 		sampleEnd = static_cast<size_t>(round(mel / stepFr));
-		double value = 0.0;
-		for (int k = sampleStart; k < sampleEnd; ++k)
+		float value = 0.0;
+		for (size_t k = sampleStart; k < sampleEnd; ++k)
 		{
-			value = max(value, (*m_samples)[k]);
+			value = max(value, m_samples->at(k));
 		}
 		
-		m_img->setPixel(m_currentIndex, m_img->getSize().y - i - 1, lerp(sf::Color::White, sf::Color::Black, 0.4f * log10(max(value, 1.))));
+		m_img->setPixel(m_currentIndex, m_img->getSize().y - i - 1, lerp(sf::Color::White, sf::Color::Black, 0.4f * log10(max(value, 1.f))));
 	}
 
 	m_tex->update(*m_img);
@@ -114,7 +109,6 @@ void SpectrumView::update()
 	m_spr->setScale(sf::Vector2f(getRealSize().x / m_tex->getSize().x, getRealSize().y / m_tex->getSize().y));
 	m_spr->setTextureRect(sf::IntRect(m_currentIndex, 0, m_img->getSize().x, m_img->getSize().y));
 }
-#pragma optimize( "", on )
 
 void SpectrumView::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {

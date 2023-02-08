@@ -2,7 +2,7 @@
 #define SPECTRUMVIEW_H
 
 #include "UI/AbstractUI.h"
-#include <vector>
+#include "Types.h"
 
 class SpectrumView : public AbstractUI
 {
@@ -15,7 +15,7 @@ public:
 	SpectrumView& operator=(SpectrumView&& _fv);
 	void swap(SpectrumView& _other);
 
-	void setSamples(std::vector<double>* _samples);
+	void setSamples(const FrequencyBuffer& _samples);
 
 protected:
 	virtual void update() override;
@@ -23,7 +23,7 @@ protected:
 	virtual void _updateState() override;
 
 private:
-	std::vector<double>* m_samples = nullptr;
+	const FrequencyBuffer* m_samples = nullptr;
 	sf::Color m_color;
 	sf::Texture* m_tex;
 	sf::Sprite* m_spr;

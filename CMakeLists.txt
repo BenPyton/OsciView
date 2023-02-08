@@ -87,6 +87,14 @@ add_executable(OsciView
     src/UI/View.h
     src/WaveView.cpp
     src/WaveView.h
+    src/FFTWrapper.cpp
+    src/FFTWrapper.h
+    src/Types.h
+)
+
+target_include_directories(OsciView
+    PUBLIC
+    "modules/fft-real"
 )
 
 target_link_libraries(OsciView
