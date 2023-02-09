@@ -9,8 +9,8 @@
 *
 */
 
-#ifndef _LABEL_H
-#define _LABEL_H
+#ifndef LABEL_H
+#define LABEL_H
 
 #include <SFML/Graphics.hpp>
 #include "AbstractUI.h"
@@ -54,4 +54,4 @@ protected:
 
 };
 
-#endif // _LABEL_H
+#endif // LABEL_H

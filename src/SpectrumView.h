@@ -1,5 +1,5 @@
-#ifndef _SPECTRUMVIEW_H
-#define _SPECTRUMVIEW_H
+#ifndef SPECTRUMVIEW_H
+#define SPECTRUMVIEW_H
 
 #include "UI/AbstractUI.h"
 #include <vector>
@@ -31,4 +31,4 @@ private:
 	size_t m_currentIndex;
 };
 
-#endif // _SPECTRUMVIEW_H
+#endif // SPECTRUMVIEW_H

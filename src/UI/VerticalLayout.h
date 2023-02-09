@@ -9,8 +9,8 @@
 *
 */
 
-#ifndef _VERTICALLAYOUT_H
-#define _VERTICALLAYOUT_H
+#ifndef VERTICALLAYOUT_H
+#define VERTICALLAYOUT_H
 
 #include <iostream>
 #include "Layout.h"
@@ -37,4 +37,4 @@ public:
 	virtual void update() override;
 };
 
-#endif // _VERTICALLAYOUT_H
+#endif // VERTICALLAYOUT_H

@@ -9,8 +9,8 @@
 *
 */
 
-#ifndef _ICONBUTTON_H
-#define _ICONBUTTON_H
+#ifndef ICONBUTTON_H
+#define ICONBUTTON_H
 
 
 #include <SFML/Graphics.hpp>
@@ -41,4 +41,4 @@ protected:
 };
 
 
-#endif // _ICONBUTTON_H
+#endif // ICONBUTTON_H

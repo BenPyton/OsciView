@@ -1,5 +1,5 @@
-#ifndef _STEREORECORDER_H
-#define _STEREORECORDER_H
+#ifndef STEREORECORDER_H
+#define STEREORECORDER_H
 
 #include <SFML/Audio/SoundRecorder.hpp>
 #include <vector>
@@ -42,4 +42,4 @@ private:
 	bool m_DFTEnabled;
 };
 
-#endif // _STEREORECORDER_H
+#endif // STEREORECORDER_H

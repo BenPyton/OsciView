@@ -9,8 +9,8 @@
 *
 */
 
-#ifndef _SCROLLBAR_H
-#define _SCROLLBAR_H
+#ifndef SCROLLBAR_H
+#define SCROLLBAR_H
 
 #include <iostream>
 #include "AbstractSlider.h"
@@ -41,4 +41,4 @@ private:
 	bool m_dragging;
 };
 
-#endif // _SCROLLBAR_H
+#endif // SCROLLBAR_H

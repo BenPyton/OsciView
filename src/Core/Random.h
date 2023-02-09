@@ -9,8 +9,8 @@
 *
 */
 
-#ifndef _RANDOM_H
-#define _RANDOM_H
+#ifndef RANDOM_H
+#define RANDOM_H
 
 #include <iostream>
 
@@ -31,4 +31,4 @@ public:
 
 };
 
-#endif // _RANDOM_H
+#endif // RANDOM_H

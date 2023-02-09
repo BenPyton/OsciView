@@ -9,8 +9,8 @@
 *
 */
 
-#ifndef _VECTOR3_H
-#define _VECTOR3_H
+#ifndef VECTOR3_H
+#define VECTOR3_H
 
 #include <iostream>
 
@@ -65,4 +65,4 @@ Vector3 operator*(float _a, const Vector3& _b);
 Vector3 operator*(const Vector3& _a, float _b);
 Vector3 operator/(const Vector3& _a, float _b);
 
-#endif // _VECTOR3_H
+#endif // VECTOR3_H

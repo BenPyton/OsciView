@@ -9,8 +9,8 @@
 *
 */
 
-#ifndef _HORIZONTALLAYOUT_H
-#define _HORIZONTALLAYOUT_H
+#ifndef HORIZONTALLAYOUT_H
+#define HORIZONTALLAYOUT_H
 
 #include <iostream>
 #include "Layout.h"
@@ -37,4 +37,4 @@ public:
 	virtual void update() override;
 };
 
-#endif // _HORIZONTALLAYOUT_H
+#endif // HORIZONTALLAYOUT_H

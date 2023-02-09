@@ -9,8 +9,8 @@
 *
 */
 
-#ifndef _MATRIX4_H
-#define _MATRIX4_H
+#ifndef MATRIX4_H
+#define MATRIX4_H
 
 #include <iostream>
 
@@ -28,4 +28,4 @@ public:
 
 };
 
-#endif // _MATRIX4_H
+#endif // MATRIX4_H

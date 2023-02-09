@@ -9,8 +9,8 @@
 *
 */
 
-#ifndef _UISTYLE_H
-#define _UISTYLE_H
+#ifndef UISTYLE_H
+#define UISTYLE_H
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
@@ -50,4 +50,4 @@ public:
 	static UIStyle Default;
 };
 
-#endif // _UISTYLE_H
+#endif // UISTYLE_H

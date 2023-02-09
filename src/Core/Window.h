@@ -9,8 +9,8 @@
 *
 */
 
-#ifndef _WINDOW_H
-#define _WINDOW_H
+#ifndef WINDOW_H
+#define WINDOW_H
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
@@ -59,4 +59,4 @@ public:
 	static sf::RenderWindow* GetWindow();
 };
 
-#endif // _WINDOW_H
+#endif // WINDOW_H

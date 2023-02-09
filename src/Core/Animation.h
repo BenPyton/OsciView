@@ -9,8 +9,8 @@
 *
 */
 
-#ifndef ANIMATION_H_INCLUDED
-#define ANIMATION_H_INCLUDED
+#ifndef ANIMATION_H
+#define ANIMATION_H
 
 
 //struct Animation
@@ -60,4 +60,4 @@ public:
 };
 
 
-#endif // ANIMATION_H_INCLUDED
+#endif // ANIMATION_H

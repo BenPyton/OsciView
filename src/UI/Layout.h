@@ -9,8 +9,8 @@
 *
 */
 
-#ifndef _LAYOUT_H
-#define _LAYOUT_H
+#ifndef LAYOUT_H
+#define LAYOUT_H
 
 #include <iostream>
 #include "AbstractUI.h"
@@ -38,4 +38,4 @@ protected:
 	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 };
 
-#endif // _LAYOUT_H
+#endif // LAYOUT_H

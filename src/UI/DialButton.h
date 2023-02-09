@@ -9,8 +9,8 @@
 *
 */
 
-#ifndef _DIALBUTTON_H
-#define _DIALBUTTON_H
+#ifndef DIALBUTTON_H
+#define DIALBUTTON_H
 
 #include <iostream>
 #include "AbstractSlider.h"
@@ -60,4 +60,4 @@ private:
 	LabelPosition m_labelPosition;
 };
 
-#endif // _DIALBUTTON_H
+#endif // DIALBUTTON_H

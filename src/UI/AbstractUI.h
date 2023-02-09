@@ -9,8 +9,8 @@
 *
 */
 
-#ifndef _ABSTRACTUI_H
-#define _ABSTRACTUI_H
+#ifndef ABSTRACTUI_H
+#define ABSTRACTUI_H
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
@@ -107,4 +107,4 @@ protected:
 	Stretch m_stretch;
 };
 
-#endif // _ABSTRACTUI_H
+#endif // ABSTRACTUI_H

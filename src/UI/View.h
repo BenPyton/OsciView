@@ -9,8 +9,8 @@
 *
 */
 
-#ifndef _VIEW_H
-#define _VIEW_H
+#ifndef VIEW_H
+#define VIEW_H
 
 #include <iostream>
 #include "SFML/Graphics.hpp"
@@ -51,4 +51,4 @@ protected:
 	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 };
 
-#endif // _VIEW_H
+#endif // VIEW_H
