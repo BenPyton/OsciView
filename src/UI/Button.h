@@ -9,8 +9,8 @@
 *
 */
 
-#ifndef BUTTON_H_INCLUDED
-#define BUTTON_H_INCLUDED
+#ifndef BUTTON_H
+#define BUTTON_H
 
 
 #include <SFML/Graphics.hpp>
@@ -53,4 +53,4 @@ protected:
 };
 
 
-#endif // BUTTON_H_INCLUDED
+#endif // BUTTON_H

@@ -1,5 +1,5 @@
-#ifndef _OSCIVIEW_H
-#define _OSCIVIEW_H
+#ifndef OSCIVIEW_H
+#define OSCIVIEW_H
 
 #include "UI/AbstractUI.h"
 #include <vector>
@@ -34,4 +34,4 @@ private:
 	float m_lineWidth = 6.0f;
 };
 
-#endif // _OSCIVIEW_H
+#endif // OSCIVIEW_H

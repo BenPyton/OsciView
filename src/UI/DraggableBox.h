@@ -9,8 +9,8 @@
 *
 */
 
-#ifndef _DRAGGABLEBOX_H
-#define _DRAGGABLEBOX_H
+#ifndef DRAGGABLEBOX_H
+#define DRAGGABLEBOX_H
 
 #include <iostream>
 #include "AbstractUI.h"
@@ -41,4 +41,4 @@ protected:
 	//virtual void _updateStyle() override;
 };
 
-#endif // _DRAGGABLEBOX_H
+#endif // DRAGGABLEBOX_H

@@ -9,8 +9,8 @@
 *
 */
 
-#ifndef _INPUT_H
-#define _INPUT_H
+#ifndef INPUT_H
+#define INPUT_H
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
@@ -57,4 +57,4 @@ public:
 	static sf::String GetEnteredText();
 };
 
-#endif // _INPUT_H
+#endif // INPUT_H

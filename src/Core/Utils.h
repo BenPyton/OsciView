@@ -9,8 +9,8 @@
 *
 */
 
-#ifndef _UTILS_H
-#define _UTILS_H
+#ifndef UTILS_H
+#define UTILS_H
 
 #include <iostream>
 #include <fstream>
@@ -48,4 +48,4 @@ void DFT(const vector<double>& in, vector<double>& out);
 sf::Color fromHSV(float h, float s, float v);
 sf::Color lerp(const sf::Color& a, const sf::Color& b, float t);
 
-#endif // _UTILS_H
+#endif // UTILS_H

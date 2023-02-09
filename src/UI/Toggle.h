@@ -9,8 +9,8 @@
 *
 */
 
-#ifndef _TOGGLE_H
-#define _TOGGLE_H
+#ifndef TOGGLE_H
+#define TOGGLE_H
 
 #include <iostream>
 #include "Button.h"
@@ -37,4 +37,4 @@ protected:
 	virtual void _updateStyle() override;*/
 };
 
-#endif // _TOGGLE_H
+#endif // TOGGLE_H

@@ -1,5 +1,5 @@
-#ifndef _FREQVIEW_H
-#define _FREQVIEW_H
+#ifndef FREQVIEW_H
+#define FREQVIEW_H
 
 #include "UI/AbstractUI.h"
 #include <vector>
@@ -27,4 +27,4 @@ private:
 	sf::Color m_color;
 };
 
-#endif // _FREQVIEW_H
+#endif // FREQVIEW_H

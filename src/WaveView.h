@@ -1,5 +1,5 @@
-#ifndef _WAVEVIEW_H
-#define _WAVEVIEW_H
+#ifndef WAVEVIEW_H
+#define WAVEVIEW_H
 
 #include "UI/AbstractUI.h"
 #include <vector>
@@ -31,4 +31,4 @@ private:
 	int m_sampleRate = 0;
 };
 
-#endif // _WAVEVIEW_H
+#endif // WAVEVIEW_H

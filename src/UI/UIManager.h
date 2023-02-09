@@ -9,8 +9,8 @@
 *
 */
 
-#ifndef _UIMANAGER_H
-#define _UIMANAGER_H
+#ifndef UIMANAGER_H
+#define UIMANAGER_H
 
 #include <vector>
 #include "AbstractUI.h"
@@ -63,4 +63,4 @@ public:
 
 };
 
-#endif // _UIMANAGER_H
+#endif // UIMANAGER_H

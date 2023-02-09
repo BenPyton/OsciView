@@ -1,5 +1,5 @@
-#ifndef _UI_H
-#define _UI_H
+#ifndef UI_H
+#define UI_H
 
 #include "UI/AbstractUI.h"
 #include "UI/AbstractSlider.h"
@@ -18,5 +18,5 @@
 #include "UI/VerticalLayout.h"
 #include "UI/View.h"
 
-#endif // _UI_H
+#endif // UI_H
 

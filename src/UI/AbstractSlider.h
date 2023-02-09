@@ -9,8 +9,8 @@
 *
 */
 
-#ifndef _ABSTRACTSLIDER_H
-#define _ABSTRACTSLIDER_H
+#ifndef ABSTRACTSLIDER_H
+#define ABSTRACTSLIDER_H
 
 #include <iostream>
 #include "AbstractUI.h"
@@ -45,4 +45,4 @@ private:
 	bool m_valueChanged;
 };
 
-#endif // _ABSTRACTSLIDER_H
+#endif // ABSTRACTSLIDER_H

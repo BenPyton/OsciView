@@ -9,8 +9,8 @@
 *
 */
 
-#ifndef _INPUTFIELD_H
-#define _INPUTFIELD_H
+#ifndef INPUTFIELD_H
+#define INPUTFIELD_H
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
@@ -64,4 +64,4 @@ protected:
 	virtual void _updateStyle() override;
 };
 
-#endif // _INPUTFIELD_H
+#endif // INPUTFIELD_H

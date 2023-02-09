@@ -9,8 +9,8 @@
 *
 */
 
-#ifndef _MATRIX3_H
-#define _MATRIX3_H
+#ifndef MATRIX3_H
+#define MATRIX3_H
 
 #include <iostream>
 #include "Vector3.h"
@@ -73,4 +73,4 @@ Matrix3 operator*(float _f, const Matrix3& _m);
 Matrix3 operator*(const Matrix3& _m, float _f);
 Matrix3 operator/(const Matrix3& _m, float _f);
 
-#endif // _MATRIX3_H
+#endif // MATRIX3_H

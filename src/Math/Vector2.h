@@ -9,8 +9,8 @@
 *
 */
 
-#ifndef _VECTOR2_H
-#define _VECTOR2_H
+#ifndef VECTOR2_H
+#define VECTOR2_H
 
 #include <SFML/System.hpp>
 #include <iostream>
@@ -69,4 +69,4 @@ Vector2 operator*(const Vector2& _a, float _b);
 Vector2 operator/(const Vector2& _a, float _b);
 
 
-#endif // _VECTOR2_H
+#endif // VECTOR2_H
