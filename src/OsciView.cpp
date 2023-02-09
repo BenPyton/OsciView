@@ -17,6 +17,7 @@ OsciView::OsciView(int x, int y, int width, int height, UIStyle& style)
 
 	string frag = 
 	"//FRAGMENT SHADER\
+\n	#version 330 compatibility\
 \n	#define TAUR 2.5066282746310002\
 \n	#define EPS 1E-6\
 \n	#define SQRT2 1.4142135623730951\

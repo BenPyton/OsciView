@@ -9,8 +9,8 @@
 *
 */
 
-#ifndef _TIME_H
-#define _TIME_H
+#ifndef TIME_H
+#define TIME_H
 
 #include <iostream>
 #include <assert.h>
@@ -42,4 +42,4 @@ public:
 	static void LockFramerate(int framerate);
 };
 
-#endif // _TIME_H
+#endif // TIME_H

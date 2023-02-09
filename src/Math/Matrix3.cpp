@@ -9,7 +9,6 @@
 *
 */
 
-#include "stdafx.h"
 #include "Matrix3.h"
 
 #define _00 0
