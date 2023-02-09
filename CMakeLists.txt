@@ -1,15 +1,12 @@
 # Copyright (c) 2023 Sebastian Pipping <sebastian@pipping.org>
 # Licensed under the MIT license
 
-cmake_minimum_required(VERSION 3.6)
-# CMake features used that need more than CMake 3.0:
-# - pkg_check_modules([..] IMPORTED_TARGET [..]) needs >=3.6
+cmake_minimum_required(VERSION 3.0)
 
 project(OsciView VERSION 1.0.0)
 
-include(FindPkgConfig)
-
-pkg_check_modules(SFML sfml-all REQUIRED IMPORTED_TARGET)
+set(SFML_STATIC_LIBRARIES FALSE)
+find_package(SFML 2.5.1 COMPONENTS audio graphics REQUIRED CONFIG)
 
 add_executable(OsciView
     src/Core/Animation.cpp
@@ -81,5 +78,6 @@ add_executable(OsciView
 
 target_link_libraries(OsciView
     PUBLIC
-    PkgConfig::SFML
+    sfml-graphics
+    sfml-audio
 )
