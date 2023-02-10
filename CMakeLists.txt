@@ -1,9 +1,22 @@
 # Copyright (c) 2023 Sebastian Pipping <sebastian@pipping.org>
 # Licensed under the MIT license
 
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.5)
 
 project(OsciView VERSION 1.0.0)
+
+if(WIN32)
+    if(NOT DEFINED SFML_HOME)
+        if(DEFINED ENV{SFML_HOME})
+            set(SFML_HOME $ENV{SFML_HOME})
+        else()
+            message(FATAL_ERROR "SFML_HOME is not defined. Please, set it with -DSFML_HOME=path/to/sfml in cmake command, or add an environment variable in Windows, or set it from your IDE settings.")
+        endif()
+    endif()
+
+    message(STATUS "Using SFML_HOME=${SFML_HOME}")
+    set(SFML_DIR "${SFML_HOME}/lib/cmake/SFML")
+endif()
 
 set(SFML_STATIC_LIBRARIES FALSE)
 find_package(SFML 2.5.1 COMPONENTS audio graphics REQUIRED CONFIG)
@@ -81,3 +94,38 @@ target_link_libraries(OsciView
     sfml-graphics
     sfml-audio
 )
+
+if(WIN32)
+    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+        set(SFML_LIB_POSTFIX -d-2)
+    else()
+        set(SFML_LIB_POSTFIX -2)
+    endif()
+
+    get_filename_component(COMPILER_DIR ${CMAKE_CXX_COMPILER} DIRECTORY)
+
+    set(DLLS_TO_COPY
+        \"${COMPILER_DIR}/libstdc++-6.dll\"
+        \"${SFML_HOME}/bin/openal32.dll\"
+        \"${SFML_HOME}/bin/sfml-system${SFML_LIB_POSTFIX}.dll\"
+        \"${SFML_HOME}/bin/sfml-window${SFML_LIB_POSTFIX}.dll\"
+        \"${SFML_HOME}/bin/sfml-graphics${SFML_LIB_POSTFIX}.dll\"
+        \"${SFML_HOME}/bin/sfml-audio${SFML_LIB_POSTFIX}.dll\"
+    )
+
+    add_custom_command(
+        TARGET OsciView
+        POST_BUILD
+        # Multifile copy requires CMake >= 3.5
+        COMMAND ${CMAKE_COMMAND} -E copy ${DLLS_TO_COPY} \"${CMAKE_CURRENT_BINARY_DIR}\"
+        COMMENT "POST BUILD: Copying dlls in the output directory."
+    )
+
+    add_custom_command(
+        TARGET OsciView
+        POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E make_directory \"${CMAKE_CURRENT_BINARY_DIR}/data\"
+        COMMAND ${CMAKE_COMMAND} -E copy_directory \"${CMAKE_SOURCE_DIR}/data/\" \"${CMAKE_CURRENT_BINARY_DIR}/data\"
+        COMMENT "POST BUILD: Copying data folder in output directory."
+    )
+endif()
