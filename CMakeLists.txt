@@ -18,6 +18,27 @@ if(WIN32)
     set(SFML_DIR "${SFML_HOME}/lib/cmake/SFML")
 endif()
 
+if(NOT EXISTS "${CMAKE_SOURCE_DIR}/modules/fft-real/ffft")
+    find_package(Git)
+    if(GIT_FOUND AND EXISTS "${CMAKE_SOURCE_DIR}/.git")
+        # Project cloned from a git repo. We can initialize submodules with git.
+        option(GIT_SUBMODULE "Check submodules during build" ON)
+        if(GIT_SUBMODULE)
+            message(STATUS "Updating git submodules.")
+            execute_process(COMMAND ${GIT_EXECUTABLE} submodule update --init --recursive
+                            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+                            RESULT_VARIABLE GIT_SUBMODULE_RESULT)
+            if(NOT GIT_SUBMODULE_RESULT EQUAL "0")
+                message(FATAL_ERROR "Git submodule update failed with result ${GIT_SUBMODULE_RESULT}.")
+            endif()
+        endif()
+    else()
+        # User needs to download manually.
+        # TODO: Is there a way to download it automatically with FetchContent or ExternalProject? 
+        message(FATAL_ERROR "The submodule fft-real was not found. Please download it from https://github.com/andywang0607/fft-real and place it in the \"modules\" folder.")
+    endif()
+endif()
+
 set(SFML_STATIC_LIBRARIES FALSE)
 find_package(SFML 2.5.1 COMPONENTS audio graphics REQUIRED CONFIG)
 
