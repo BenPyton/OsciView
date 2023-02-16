@@ -4,6 +4,7 @@
 #include <SFML/Audio/SoundRecorder.hpp>
 #include <vector>
 #include <mutex>
+#include <atomic>
 #include "Types.h"
 
 class StereoRecorder : public sf::SoundRecorder
@@ -41,6 +42,8 @@ private:
 	FFTWrapper m_FFT;
 
 	size_t m_pos;
+
+	std::atomic<bool> m_bufferOverflow;
 };
 
 #endif // STEREORECORDER_H
