@@ -168,4 +168,15 @@ if(WIN32)
         COMMAND ${CMAKE_COMMAND} -E copy_directory \"${CMAKE_SOURCE_DIR}/data/\" \"${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/data\"
         COMMENT "POST BUILD: Copying data folder in output directory."
     )
+    
+    if(CMAKE_BUILD_TYPE STREQUAL "Release")
+        add_custom_command(
+            TARGET OsciView
+            POST_BUILD
+            WORKING_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}"
+            COMMAND ${CMAKE_COMMAND} -E make_directory \"${CMAKE_SOURCE_DIR}/packaged\"
+            COMMAND ${CMAKE_COMMAND} -E tar \"cfv\" \"${CMAKE_SOURCE_DIR}/packaged/${PROJECT_NAME}-${PROJECT_VERSION}-${COMPILER_ARCHITECTURE}.zip\" --format=zip -- "."
+            COMMENT "POST BUILD: Packaging the release."
+        )
+    endif()
 endif()

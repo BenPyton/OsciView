@@ -1,5 +1,6 @@
 [Bb]in/
 [Tt]mp/
 [Bb]uild/
+[Pp]ackaged/
 .vs
 .vscode
