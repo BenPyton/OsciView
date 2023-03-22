@@ -42,6 +42,14 @@ endif()
 set(SFML_STATIC_LIBRARIES FALSE)
 find_package(SFML 2.5.1 COMPONENTS audio graphics REQUIRED CONFIG)
 
+if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+    set(COMPILER_ARCHITECTURE x64)
+else()
+    set(COMPILER_ARCHITECTURE x86)
+endif()
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/${COMPILER_ARCHITECTURE}/${CMAKE_BUILD_TYPE}")
+
 add_executable(OsciView
     src/Core/Animation.cpp
     src/Core/Animation.h
@@ -114,12 +122,12 @@ add_executable(OsciView
 )
 
 target_include_directories(OsciView
-    PUBLIC
+    PRIVATE
     "modules/fft-real"
 )
 
 target_link_libraries(OsciView
-    PUBLIC
+    PRIVATE
     sfml-graphics
     sfml-audio
 )
@@ -136,7 +144,6 @@ if(WIN32)
     endif()
 
     get_filename_component(COMPILER_DIR ${CMAKE_CXX_COMPILER} DIRECTORY)
-
     set(DLLS_TO_COPY
         \"${COMPILER_DIR}/libstdc++-6.dll\"
         \"${SFML_HOME}/bin/openal32.dll\"
@@ -150,15 +157,15 @@ if(WIN32)
         TARGET OsciView
         POST_BUILD
         # Multifile copy requires CMake >= 3.5
-        COMMAND ${CMAKE_COMMAND} -E copy ${DLLS_TO_COPY} \"${CMAKE_CURRENT_BINARY_DIR}\"
+        COMMAND ${CMAKE_COMMAND} -E copy ${DLLS_TO_COPY} \"${CMAKE_RUNTIME_OUTPUT_DIRECTORY}\"
         COMMENT "POST BUILD: Copying dlls in the output directory."
     )
 
     add_custom_command(
         TARGET OsciView
         POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E make_directory \"${CMAKE_CURRENT_BINARY_DIR}/data\"
-        COMMAND ${CMAKE_COMMAND} -E copy_directory \"${CMAKE_SOURCE_DIR}/data/\" \"${CMAKE_CURRENT_BINARY_DIR}/data\"
+        COMMAND ${CMAKE_COMMAND} -E make_directory \"${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/data\"
+        COMMAND ${CMAKE_COMMAND} -E copy_directory \"${CMAKE_SOURCE_DIR}/data/\" \"${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/data\"
         COMMENT "POST BUILD: Copying data folder in output directory."
     )
 endif()
