@@ -42,13 +42,15 @@ endif()
 set(SFML_STATIC_LIBRARIES FALSE)
 find_package(SFML 2.5.1 COMPONENTS audio graphics REQUIRED CONFIG)
 
-if(CMAKE_SIZEOF_VOID_P EQUAL 8)
-    set(COMPILER_ARCHITECTURE x64)
-else()
-    set(COMPILER_ARCHITECTURE x86)
-endif()
+if(WIN32)
+    if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+        set(COMPILER_ARCHITECTURE x64)
+    else()
+        set(COMPILER_ARCHITECTURE x86)
+    endif()
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/${COMPILER_ARCHITECTURE}/${CMAKE_BUILD_TYPE}")
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/${COMPILER_ARCHITECTURE}/${CMAKE_BUILD_TYPE}")
+endif()
 
 add_executable(OsciView
     src/Core/Animation.cpp
@@ -132,11 +134,11 @@ target_link_libraries(OsciView
     sfml-audio
 )
 
-if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
-    target_link_options(OsciView PRIVATE "-mwindows")
-endif()
-
 if(WIN32)
+    if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
+        target_link_options(OsciView PRIVATE "-mwindows")
+    endif()
+
     if(CMAKE_BUILD_TYPE STREQUAL "Debug")
         set(SFML_LIB_POSTFIX -d-2)
     else()
