@@ -124,6 +124,10 @@ target_link_libraries(OsciView
     sfml-audio
 )
 
+if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
+    target_link_options(OsciView PRIVATE "-mwindows")
+endif()
+
 if(WIN32)
     if(CMAKE_BUILD_TYPE STREQUAL "Debug")
         set(SFML_LIB_POSTFIX -d-2)
